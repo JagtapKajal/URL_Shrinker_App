@@ -25,6 +25,7 @@
                     <th>Full URL</th>
                     <th>Short URL</th>
                     <th>Clicks count</th>
+                    <th>Delete URL</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +42,13 @@
                         <td>
                             <%= Shorturl.clicks %>
                         </td>
+
+                        <td>
+                    <a href="/delete/<%= Shorturl.short %>" 
+                       style="color: red; font-weight:bold;">
+                       Delete
+                    </a>
+                </td>
                     </tr>
                     <% })%>
 
