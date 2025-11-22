@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <title>Url_Shinker</title>
 </head>
+
 <body>
     <div class="container">
 
@@ -44,11 +45,14 @@
                         </td>
 
                         <td>
-                    <a href="/delete/<%= Shorturl.short %>" 
-                       style="color: red; font-weight:bold;">
-                       Delete
-                    </a>
-                </td>
+                            <form action="/delete/<%= Shorturl.short %>" method="POST"
+                                onsubmit="return confirm('Are you sure you want to delete this URL?');">
+                                <button type="submit"
+                                    style="background:red;color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                     <% })%>
 
