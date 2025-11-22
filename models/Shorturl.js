@@ -1,21 +1,21 @@
 const mongoose = require('mongoose')
 const shortid = require('shortid')
 const ShortUrlSchema = new mongoose.Schema({
-    full:{
+    full: {
         type: String,
-        required :true
+        required: true
     },
-     short :{
-        type : String,
-        required : true,
-        default : shortid.generate
+    short: {
+        type: String,
+        required: true,
+        default: shortid.generate
     },
-    clicks : {
-        type : Number,
-        required : true,
-        default : 0
+    clicks: {
+        type: Number,
+        required: true,
+        default: 0
     },
-     lastClickedAt: {
+    lastClickedAt: {
         type: Date,
         default: null
     }
