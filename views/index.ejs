@@ -18,6 +18,33 @@
             <button class="btn btn-success" type="submit">Shrink</button>
         </form>
 
+        <table class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>Full URL</th>
+                    <th>Short URL</th>
+                    <th>Clicks count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% shorturls.forEach(Shorturl=> {
+                    %>
+                    <tr>
+                        <td><a href="<%= Shorturl.full %>">
+                                <%= Shorturl.full%>
+                            </a>
+                        </td>
+                        <td><a href="<%= Shorturl.short %>">
+                                <%= Shorturl.short %>
+                            </a></td>
+                        <td>
+                            <%= Shorturl.clicks %>
+                        </td>
+                    </tr>
+                    <% })%>
+
+            </tbody>
+        </table>
 
     </div>
 </body>
