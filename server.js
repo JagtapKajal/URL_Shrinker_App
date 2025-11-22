@@ -65,6 +65,20 @@ app.post('/delete/:short', async (req, res) => {
   } catch (err) {
     res.status(500).send('Error deleting URL');
   }
+
+  //To check Duplicate codes 
+  app.post('/shorturls', async (req, res) => {
+  const fullUrl = req.body.Fullurl;
+
+  // Check duplicate full URL
+  const existing = await Shorturl.findOne({ full: fullUrl });
+  if (existing) {
+    return res.status(409).send('Duplicate URL');
+  }
+
+  await Shorturl.create({ full: fullUrl });
+  res.redirect('/');
+})
 });
 
 
