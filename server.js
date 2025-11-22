@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const Shorturl = require('./models/Shorturl')
 
 
@@ -15,11 +16,26 @@ res.render('index', {shorturls: shorturls})
 })
 
 app.post('/shorturls', async(req, res) =>{
-    await
-Shorturl.create({full:req.body.Fullurl})
+ const fullUrl = req.body.Fullurl;
+    const urlObj = new URL(fullUrl);
+    let domain = urlObj.hostname.replace("www.", "").split('.')[0];
+
+    //Check if domain already used
+    let shortCode = domain;
+    const exists = await Shorturl.findOne({ short: shortCode });
+    if (exists) {
+        shortCode = `${domain}-${Math.floor(Math.random() * 1000)}`;
+    }
+
+    //UPDATED: Add full + meaningful short code
+    await Shorturl.create({
+        full: fullUrl,
+        short: shortCode
+    });
 
 res.redirect('/')
 })
+
 
 app.get('/:Shorturl', async(req, res) =>{
    const shorturl = await Shorturl.findOne({short: req.params.Shorturl}) 
