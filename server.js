@@ -51,6 +51,15 @@ app.get('/:Shorturl', async(req, res) =>{
     res.redirect(shorturl.full)
 })
 
+app.post('/delete/:short', async (req, res) => {
+  try {
+    await Shorturl.findOneAndDelete({ short: req.params.short });
+    res.redirect('/');
+  } catch (err) {
+    res.status(500).send('Error deleting URL');
+  }
+});
+
 
 
 app.listen(process.env.PORT || 5000);
