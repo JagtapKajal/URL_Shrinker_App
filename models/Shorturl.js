@@ -14,6 +14,10 @@ const ShortUrlSchema = new mongoose.Schema({
         type : Number,
         required : true,
         default : 0
+    },
+     lastClickedAt: {
+        type: Date,
+        default: null
     }
 })
 
