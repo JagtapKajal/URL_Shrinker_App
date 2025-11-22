@@ -36,6 +36,10 @@ app.post('/shorturls', async(req, res) =>{
 res.redirect('/')
 })
 
+app.get('/delete/:code', async (req, res) => {
+    await Shorturl.findOneAndDelete({ short: req.params.code });
+    res.redirect('/');
+});
 
 app.get('/:Shorturl', async(req, res) =>{
    const shorturl = await Shorturl.findOne({short: req.params.Shorturl}) 
@@ -46,6 +50,7 @@ app.get('/:Shorturl', async(req, res) =>{
 
     res.redirect(shorturl.full)
 })
+
 
 
 app.listen(process.env.PORT || 5000);
