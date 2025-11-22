@@ -13,3 +13,10 @@ app.get('/',async (req, res) =>{
   const shorturls = await Shorturl.find()
 res.render('index', {shorturls: shorturls})
 })
+
+app.post('/shorturls', async(req, res) =>{
+    await
+Shorturl.create({full:req.body.Fullurl})
+
+res.redirect('/')
+})
