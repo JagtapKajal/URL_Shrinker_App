@@ -46,6 +46,7 @@ app.get('/:Shorturl', async(req, res) =>{
    if(shorturl == null) return res.sendStatus(404)
 
     shorturl.clicks++
+     shorturl.lastClickedAt = new Date();
     shorturl.save()
 
     res.redirect(shorturl.full)
