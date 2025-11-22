@@ -8,6 +8,11 @@ const app = express()
 //database URL 
 mongoose.connect('mongodb://localhost/urlshortener');
 
+app.get('/healthz', (req, res) => {
+  res.status(200).send('OK');
+});
+
+
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 
