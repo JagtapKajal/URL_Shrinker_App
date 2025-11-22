@@ -28,6 +28,12 @@
         tr:nth-child(even) {
             background: #f9f9f9;
         }
+
+        @media (max-width: 600px) {
+  table, thead, tbody, tr, td, th {
+    display: block;
+  }
+}
     </style>
 </head>
 
@@ -39,7 +45,7 @@
 
         <form action="/shorturls" method="POST" class="my-3 form-inline">
             <label for="Fullurl" class="sr-only">Enter URL</label>
-            <input required="url" type="url" name="Fullurl" id="fullrul">
+           <input type="url" name="Fullurl" required placeholder="Enter URL">
             <button class="btn btn-success" type="submit">Shrink</button>
         </form>
 
